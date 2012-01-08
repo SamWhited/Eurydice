@@ -7,13 +7,9 @@ A copy of the CC by-nc-sa license can be found in the LICENSE file.
 
 ## Special Thanks and Attribution
 Special thanks to Jack Crawford and his band for allowing us to use their song "The Wreckoning" and to Astat for their song, "[Dia Del Amor](http://www.clearbits.net/torrents/1423-various-artists---goodfellas)" which is licensed under a [Creative Commons by-nc-nd license](http://creativecommons.org/licenses/by-nc-nd/3.0/).
-Also, thank you to the [G-Town Church Sampling Project](http://www.clearbits.net/torrents/22-g-town-church-sampling-project) and Tobias Marberger for releasing their excellent sample library under a [Creative Commons Sampling+ license](http://creativecommons.org/licenses/sampling+/1.0/](http://creativecommons.org/licenses/sampling+/1.0/).
+Also, thank you to the [G-Town Church Sampling Project](http://www.clearbits.net/torrents/22-g-town-church-sampling-project) and Tobias Marberger for releasing their excellent sample library under a [Creative Commons Sampling+ license](http://creativecommons.org/licenses/sampling+/1.0/).
 
 These special thanks were also reprinted in the show program and the accompanying insert.
-
-## A Note on Mixing
-The audio mixing for the sound effects used in _Eurydice_ is a bit confusing. The audio was originally mixed for 7.1 channels in [Audacity](http://audacity.sourceforge.net/). However, Audacity does not keep a record of which tracks are patched to which output channels, so I started mapping each track to a separate channel and patching them by hand in [QLab](http://figure53.com/qlab/).
-Because of this, I have included the original Audacity projects as well as the final AIFF audio files. To see how the audio files were mixed, one should first consult the AIFF files channel mapping, then, if the file contains more than 8 channels, consult the cues file.
 
 ### Channel Mapping
 The speaker configuration for the show was a custom 7.1 channel surround sound setup similar to standard 7.1 Surround, but with a few modifications which made it incompatible with standard 5.1 and 7.1 audio.
