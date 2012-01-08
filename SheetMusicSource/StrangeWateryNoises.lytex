@@ -1,0 +1,73 @@
+% !TEX TS-program = lytex
+% !TEX encoding = UTF-8
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{multicol}
+\usepackage{textcomp}
+\usepackage[margin=2cm]{geometry}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+	{\large \textbf{Strange Watery Noises}}\\
+	Eurydice
+\end{center}
+
+\begin{flushright}
+	Sam Whited
+\end{flushright}
+
+\begin{lilypond}
+	\version "2.14.1"
+
+	violin = \relative c'' {
+		\tempo "morendo" 4 = 90
+		\set Staff.midiInstrument = #"violin"
+		\clef "treble"
+		\key ees \major
+		\time 4/4
+		
+		c4 g d ees | \repeat volta 2 {f4^"Vamp" bes d bes | g' ees c d | } \alternative { {g, ees bes' c} {g1} }
+	}
+
+	cello = \relative c, {
+		\set Staff.midiInstrument = #"cello"
+		\clef "bass"
+		\key ees \major
+		\time 4/4
+
+		ees4 bes' f' g | \repeat volta 2 {f bes, g d' | g bes g g, | } \alternative { {ees bes' ees g} {ees1} }
+	}
+	
+	\score {
+		<<
+			#(set-accidental-style 'piano-cautionary 'Score)
+			\new StaffGroup <<
+				\new Staff = "violin" <<
+%					\set Staff.instrumentName = #"Violin"
+%					\set Staff.shortInstrumentName = #"Vln"
+					\violin
+					\addlyrics { Strange watery _ noises. | Drip, drip, _ drip. }
+				>>
+
+				\new Staff ="cello" <<
+%					\set Staff.instrumentName = #"Cello"
+%					\set Staff.instrumentName = #"Clo"
+					\cello
+				>>
+			>>
+		>>
+		\layout { }
+		\midi { }
+	}
+\end{lilypond}
+
+\begin{center}
+	\vfill
+%	Has no legal meaning of course, but it amuses me.
+%	Copyright is implied even without the statement, so it doesn't matter.
+	\textcopyleft\ 2011 Samuel Whited
+\end{center}
+
+\end{document}

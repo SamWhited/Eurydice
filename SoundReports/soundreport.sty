@@ -1,0 +1,79 @@
+\ProvidesPackage{soundreport}
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[margin=1in]{geometry}
+\geometry{a4paper}
+
+\RequirePackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape}
+
+\def\@designer{}%
+\def\@engineer{}%
+\def\@assistantengineer{}%
+\def\@begintime{}%
+\def\@donetime{}%
+\def\@clubmembers{}%
+\def\@castcrewmembers{}%
+\def\@classmembers{}%
+
+\RequirePackage[small,compact]{titlesec}
+
+\title{Sound Party Report}
+\author{}
+\date{}
+
+\newcommand{\designer}[1]{%
+	\renewcommand{\@designer}{#1}
+}
+\newcommand{\engineer}[1]{%
+	\renewcommand{\@engineer}{#1}
+}
+\newcommand{\assistantengineer}[1]{%
+	\renewcommand{\@assistantengineer}{#1}
+}
+\newcommand{\begintime}[1]{%
+	\renewcommand{\@begintime}{#1}
+}
+\newcommand{\donetime}[1]{%
+	\renewcommand{\@donetime}{#1}
+}
+\newcommand{\clubmembers}[1]{%
+	\renewcommand{\@clubmembers}{#1}
+}
+\newcommand{\castcrewmembers}[1]{%
+	\renewcommand{\@castcrewmembers}{#1}
+}
+\newcommand{\classmembers}[1]{%
+	\renewcommand{\@classmembers}{#1}
+}
+
+\def\maketitle{%
+	\null
+	\thispagestyle{empty}%
+	\begin{center}\leavevmode
+		\normalfont
+		{\LARGE Sound Party Report\par}%
+	\end{center}%
+	\begin{flushleft}
+		\textbf{Show:}\ \@title\par
+		\textbf{Date:}\ \@date\par
+		\textbf{Sound Designer:}\ \@designer\par
+		\textbf{Sound Engineer:}\ \@engineer\par
+		\textbf{Assistant Engineer:}\ \@assistantengineer\par
+	\end{flushleft}%
+	\begin{tabular}{| l | l | l |}
+		\hline
+		\textbf{Sound Party Time} & \@begintime & \@donetime\\
+		\hline
+	\end{tabular}%
+}
+
+\def\attendance{%
+	\begin{tabular}{| p{3cm} | p{5cm} | p{4cm} |}
+		\hline
+		\textbf{Club Members} & \textbf{Cast/Crew Members} & \textbf{Class Members}\\
+		\hline
+		\@clubmembers & \@castcrewmembers & \@classmembers\\
+		\hline
+	\end{tabular}%
+}

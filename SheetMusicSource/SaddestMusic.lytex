@@ -1,0 +1,70 @@
+% !TEX TS-program = lytex
+% !TEX encoding = UTF-8
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{multicol}
+\usepackage{textcomp}
+\usepackage[margin=2cm]{geometry}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+	{\large \textbf{The Saddest Music}}\\
+	Eurydice
+\end{center}
+
+\begin{flushright}
+	Sam Whited
+\end{flushright}
+
+\begin{lilypond}
+	\version "2.14.1"
+
+	violin = \relative c' {
+		\tempo "grave" 4 = 90
+		\set Staff.midiInstrument = #"violin"
+		\clef "treble"
+		\key ees \major
+		\time 4/4
+		
+		r1 | ees4~-"Eurydice:" ees16 f ees8 c d4.^\fermata | r1 | g8-"Both:" g aes f g2 | g4 aes bes8. c16 bes8 aes | g4 aes8 c ees4 g~ | g2 g,4 ees'~ | ees^"rit." d8 c d bes g d | c1^\fermata
+	}
+
+	cello = \relative c {
+		\set Staff.midiInstrument = #"cello"
+		\clef "bass"
+		\key ees \major
+		\time 4/4
+
+		c4^"Orpheus:" f c disis^\fermata | r1 | c4 f c g~ | g8 bes c4 bes g~ | g2 d'4 c~ | c d8 c g bes d c~ | c2 ees4 c'~ | c d,8 ees d bes g d | c1^\fermata
+	}
+	
+	\score {
+		<<
+			#(set-accidental-style 'piano-cautionary 'Score)
+			\new StaffGroup <<
+				\new Staff = "violin" <<
+%					\set Staff.instrumentName = #"Violin"
+%					\set Staff.shortInstrumentName = #"Vln"
+					\violin
+				>>
+
+				\new Staff ="cello" <<
+%					\set Staff.instrumentName = #"Cello"
+%					\set Staff.instrumentName = #"Clo"
+					\cello
+				>>
+			>>
+		>>
+		\layout { }
+		\midi { }
+	}
+\end{lilypond}
+
+\begin{center}
+	\vfill
+	\textcopyleft\ 2011 Samuel Whited
+\end{center}
+
+\end{document}

@@ -1,0 +1,55 @@
+% !TEX TS-program = lytex
+% !TEX encoding = UTF-8
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{multicol}
+\usepackage{textcomp}
+\usepackage[margin=2cm]{geometry}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+	{\large \textbf{The Saddest Music (Reprise)}}\\
+	Eurydice
+\end{center}
+
+\begin{flushright}
+	Sam Whited
+\end{flushright}
+
+\begin{lilypond}
+	\version "2.14.1"
+
+	cello = \relative c {
+		\tempo "cum tristitia" 4 = 90
+		\set Staff.midiInstrument = #"cello"
+		\clef "bass"
+		\key ees \major
+		\time 4/4
+
+		g4 aes bes8. c16 bes8 aes | g4 aes8 c ees4 g~ | g2 g,4 ees'~ | ees d8\> c d bes g d | c1 \!
+	}
+	
+	\score {
+		<<
+			#(set-accidental-style 'piano-cautionary 'Score)
+			\new Staff ="cello" <<
+%				\set Staff.instrumentName = #"Cello"
+%				\set Staff.instrumentName = #"Clo"
+				\cello
+			>>
+		>>
+		\layout { }
+		\midi { }
+	}
+\end{lilypond}
+
+\begin{center}
+	\vfill
+%	Has no legal meaning of course, but it amuses me.
+%	Copyright is implied even without the statement, so it doesn't matter.
+	\textcopyleft\ 2011 Samuel Whited
+\end{center}
+
+\end{document}

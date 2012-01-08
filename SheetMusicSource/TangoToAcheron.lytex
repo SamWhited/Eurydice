@@ -1,0 +1,83 @@
+% !TEX TS-program = lytex
+% !TEX encoding = UTF-8
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{multicol}
+\usepackage{textcomp}
+\usepackage[margin=2cm]{geometry}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+	{\large \textbf{Tango to Acheron}}\\
+	Eurydice
+\end{center}
+
+\begin{flushright}
+	Sam Whited
+\end{flushright}
+
+\begin{lilypond}
+	\version "2.14.1"
+
+	pianoRight = \relative c' {
+		\tempo 4 = 120
+		\clef treble
+		\key a \minor
+		\time 4/4
+
+		<c e a>1 | <b d gis> | <d e gis> | <c e a> | << { a'2 a } \\ { <d, f>1 } >> | << { g2. } \\ { <a, c e>1 }>> | <d e gis>1 | <a c e>
+	}
+
+	pianoLeft = \relative c' {
+		\clef "bass"
+		\key a \minor
+		\time 4/4
+
+		a,4. c8 e4 c | b4. e8 f4 e | e,4. gis8 b4 gis | a4. c8 e e c4 |  << {
+		f4. f8 a4 f | e4. e8 f4 e | e8. gis8. gis8 b4 c
+		} \\ {
+		d,1 | <c a>1 |  e,4. e'8 f4 e
+		} >> | a,2 a,2
+	}
+
+	violin = \relative c'' {
+		\set Staff.midiInstrument = #"violin"
+		\clef "violin"
+		\key a \minor
+		\time 4/4
+
+		a4 b8 c c4 a | gis4. e8 f4 e | gis4. a8 b4 c | a1 | f8. d f8 a4 f4 | e8.-. e-. e8 f4 e | e8.-. e-. e8 b'4 c | a1
+	}
+
+	
+	\score {
+		<<
+			#(set-accidental-style 'piano-cautionary 'Score)
+			\new PianoStaff <<
+%				Staff names do not respect margins.
+%				\set PianoStaff.instrumentName= #"Piano"
+%				\set PianoStaff.shortInstrumentName = #"Pno"
+				\new Staff = "pianoRight" \pianoRight
+				\new Staff = "pianoLeft" \pianoLeft
+			>>
+			\new Staff = "violin" <<
+%				\set Staff.instrumentName = #"Violin"
+%				\set Staff.shortInstrumentName = #"Vln"
+				\violin
+			>>
+		>>
+		\layout { }
+		\midi { }
+	}
+\end{lilypond}
+
+\begin{center}
+	\vfill
+%	Has no legal meaning of course, but it amuses me.
+%	Copyright is implied even without the statement, so it doesn't matter.
+	\textcopyleft\ 2011 Samuel Whited
+\end{center}
+
+\end{document}

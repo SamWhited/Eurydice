@@ -1,0 +1,85 @@
+% !TEX TS-program = lytex
+% !TEX encoding = UTF-8
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{multicol}
+\usepackage{textcomp}
+\usepackage[margin=2cm]{geometry}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+	{\large \textbf{Symphony for Twelve Instruments}}\\
+	Eurydice
+\end{center}
+
+\begin{flushright}
+	Sam Whited
+\end{flushright}
+
+\begin{lilypond}
+	\version "2.14.1"
+
+	pianoRight = \relative c' {
+		\tempo 4 = 120
+		\clef treble
+		\key g \major
+		\time 6/8
+
+		\partial 8 <e~ g~ c>8 << {c'8 d16 c16} \\ {<e, g>4} >>
+	}
+
+	pianoLeft = \relative c' {
+		\clef "bass"
+		\key g \major
+		\time 6/8
+
+	}
+
+	violin = \relative c'' {
+		\set Staff.midiInstrument = #"violin"
+		\clef "violin"
+		\key g \major
+		\time 6/8
+	}
+
+	cello = \relative {
+
+		\set Staff.midiInstrument = #"cello"
+		\clef "cello"
+		\key g \major
+		\time 6/8
+
+	}
+
+	
+	\score {
+		<<
+			#(set-accidental-style 'piano-cautionary 'Score)
+			\new PianoStaff <<
+%				Staff names do not respect margins.
+%				\set PianoStaff.instrumentName= #"Piano"
+%				\set PianoStaff.shortInstrumentName = #"Pno"
+				\new Staff = "pianoRight" \pianoRight
+				\new Staff = "pianoLeft" \pianoLeft
+			>>
+			\new Staff = "violin" <<
+%				\set Staff.instrumentName = #"Violin"
+%				\set Staff.shortInstrumentName = #"Vln"
+				\violin
+			>>
+		>>
+		\layout { }
+		\midi { }
+	}
+\end{lilypond}
+
+\begin{center}
+	\vfill
+%	Has no legal meaning of course, but it amuses me.
+%	Copyright is implied even without the statement, so it doesn't matter.
+	\textcopyleft\ 2011 Samuel Whited
+\end{center}
+
+\end{document}
