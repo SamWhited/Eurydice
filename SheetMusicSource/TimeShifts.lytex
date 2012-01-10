@@ -27,10 +27,8 @@
 		\key f \major
 		\time 4/4
 
-		<a~ c~ e~ g>4 <a c e a> f'8 <e a,>4. | <f d a>4 bes, g'8 f4. | bes4 c g8 bes4. | bes4 c bes8 a4. | << {} \\ {<a, c e g>4~} >> << {a'8 a f8 <e a,>4. } \\ {<a, c e>4} >> | << {<d f>4 bes4 g'8 f4.} \\ {a,8 a} >> | d'8 c bes c a g << {} \\ {a4~} >> | << {e'2 <f, c>} \\ {<e a>1} >>
-
-% << {r4 a8 a f8 <e a,>4. | a8 a} \\ {<a,~ c~ e~ g>4 <a c e> | <d f>4 } >>
-% << {} \\ {<a, c e g>4~} >> << {a'8 a} \\ {<a, c e>4 | f'8 <e a,>4.} >>
+		<a~ c~ e~ g>4 <a c e a> f'8 <e a,>4. | <f d a>4 bes, g'8 f4. | bes4^\markup { \musicglyph #"scripts.segno" } c g8 bes4. | bes4 c bes8 a4.^\markup { \center-column {"To Coda"}} | << {} \\ {<a, c e g>4~} >> << {a'8 a f8 <e a,>4. } \\ {<a, c e>4} >> | << {<d f>4 ^\markup { "D.C. al Coda"} bes4 g'8 f4.} \\ {a,8[ a]} >> | d'8^\markup { \musicglyph #"scripts.coda" } c bes c a g << {} \\ {a4~} >> | << {e'2 <f, c>} \\ {<e a>1} >> | R1
+		\bar "||"
 	}
 
 	pianoLeft = \relative c' {
@@ -38,7 +36,7 @@
 		\key f \major
 		\time 4/4
 
-		<a, c e~>4 <e e'> bes'8 a4. | <f' bes,>4 bes, g'8 f4. | bes,4 c c8 <d f> f g | bes4 c bes8 a4. | <a, c e~>4 <e e'> bes'8 a4. | <bes f'>4 bes4 g'8 f4. | d8 e d e c bes c4 | << {e2} \\ {<e, a>1}>>
+		<a, c e~>4 <e e'> bes'8 a4. | <f' bes,>4 bes, g'8 f4. | bes,4 c c8 <d f> f g | bes4 c bes8 a4. | <a, c e~>4 <e e'> bes'8 a4. | <bes f'>4 bes4 g'8 f4. | d8 e d e c bes c4 | << {e2} \\ {<e, a>1}>> | R1
 	}
 
 	viola = \relative c' {
@@ -47,7 +45,7 @@
 		\key f \major
 		\time 4/4
 
-		c4~ c f8 e4. | d4 bes g'8 f4. | bes,4 c g8 bes4. | bes4 c bes8 a4. | c4~ c f8 e4. | d4 bes g'8 f4. | d8 c bes c a g a4~ | a2 f
+		c4~ c f8 e4. | d4 bes g'8 f4. | bes,4^\markup { \musicglyph #"scripts.segno" } c g8 bes4. | bes4 c bes8 a4.^\markup { \center-column {"To Coda"}} | c4~ c f8 e4. | d4^\markup {"D.C. al Coda"} bes g'8 f4. | d8^\markup { \musicglyph #"scripts.coda" } c bes c a g a4~ | a2 f | R1
 	}
 
 	

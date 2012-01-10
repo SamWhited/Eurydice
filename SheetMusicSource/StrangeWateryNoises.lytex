@@ -29,6 +29,7 @@
 		\time 4/4
 		
 		c4 g d ees | \repeat volta 2 {f4^"Vamp" bes d bes | g' ees c d | } \alternative { {g, ees bes' c} {g1} }
+		\bar "||"
 	}
 
 	cello = \relative c, {

@@ -22,35 +22,77 @@
 	\version "2.14.1"
 
 	pianoRight = \relative c' {
-		\tempo 4 = 120
+		\tempo 4 = 90
 		\clef treble
 		\key g \major
 		\time 6/8
 
-		\partial 8 <e~ g~ c>8 << {c'8 d16 c16} \\ {<e, g>4} >>
+		<< {
+			\partial 8 {<e~ g~ c>8}  | c'8 d16 c b8 b4.
+		} \\ {
+			\once \override Stem #'transparent = ##t
+			\once \override Stem #'length = #8
+			\partial 8 {<e,~ g~ c>8\noBeam} | <e g>4
+		} >> | a8 c d16 e fis8 e4 | <e, g b>4. <a c e> | fis8 a c <b d fis>4. | R2. | d,8.\glissando fis16 a8 fis8. g16 a8 | g8  g fis a4 fis8 | e8. e16 g8 e4. | d8\glissando d'4 <b d>8. <c e>16 <d fis>8 | <d g>8. <d fis>16 <c e>8 <b d>8. <a c>16 <g b>8 | <c e>8. <b d>16 <a c>8 <g b>8. <a c>16 <a d>8 | R2. | d8 c b b8. c16 d8 | a4. \grace g4 fis8. d | g4 {
+			\once \override Stem #'stroke-style = #"grace"
+			\grace fis8
+		} e8 dis8. cis16 dis8 | <fis~ g~ b d>4. <fis g b e>\fermata | R2.
+		\bar "||"
 	}
 
 	pianoLeft = \relative c' {
-		\clef "bass"
+		\clef bass
 		\key g \major
 		\time 6/8
 
+		\partial 8 {R8} | g4 a8 b8. c16 b8 | c4 a8 fis8. a16 b8 | {
+			\override TupletBracket #'bracket-visibility = #'if-no-beam
+			e,8 c a c8 \times 2/3{e16 fis g} e8
+		} | \grace {c8[ fis g]} fis8 d c b4. | R2. | <a d fis>8[ \grace {d16[ fis]} <fis a>8 a] fis4 a8 | e8[ e {
+			\once \override Stem #'stroke-style = #"grace" 
+			\grace b'8
+		} a] fis4 d8 << {
+			<e g>8. e16 e8 e4.
+		} \\ {
+			c2.
+		} >> | d8\glissando d'4 b,16 c d \times 2/3{c32 d e} \times 2/3{d16 e fis} | {
+			\set tupletSpannerDuration = #(ly:make-moment 3 8)
+			\times 2/3{g8. fis e d c b}
+		} | c8. c16 c8 b8. c16 d8 | R2. | b'4. <g d'>4 <g d'>8 << {
+			d'4
+		} \\ {
+			d,8 d <d a'> <d fis>4 <dis a'>8
+		} >> | <e g>4 <a, a'>8 <b fis'>4 <b fis'>8 | <g b d a'>4. <a c e b'>4.\fermata | R2.
 	}
 
 	violin = \relative c'' {
 		\set Staff.midiInstrument = #"violin"
-		\clef "violin"
+		\clef treble
 		\key g \major
 		\time 6/8
+
+		\partial 8 {g8} | e8 b'16 c b8 fis4. | a,8 c e16 fis e16 d c4 | {
+			\override TupletBracket #'bracket-visibility = #'if-no-beam
+			b8 \times 2/3 {c d e} c8 \times 2/3 {e16 fis g} e8
+		} | b'8 g a b,4 fis'8 | e8 g fis fis8 g16 a b8 | b16 a g fis d8 d8. e16 fis8 | g8 g fis a4 fis8 | e8. e16 g8^\> e4.\! | R2.*7 | e4.\trill \grace {e16[ fis]} e4.\fermata | R2.
 	}
 
-	cello = \relative {
-
+	cello = \relative c {
 		\set Staff.midiInstrument = #"cello"
-		\clef "cello"
+		\clef bass
 		\key g \major
 		\time 6/8
 
+		\partial 8 {e8} | g4 a8 b8. c16 b8 | c4 a8 fis8. a16 b8 | g4 e'8 e8. dis16 e8 | g4 fis8 dis4 b8 | g4 a b16 c b8 | d,8 d a' fis4 a8 | e8[ e {
+			\once \override Stem #'stroke-style = #"grace" 
+			\grace b'8
+		} a] fis4 d8 | e8. e16 e8 e4. | d'4. d8. c16 b8 | a4 {
+			\once \override Stem #'stroke-style = #"grace"
+			\grace g8
+		} fis d8. e16 fis8 | g4 {
+			\once \override Stem #'stroke-style = #"grace"
+			\grace a8
+		} c b8.a16 fis8 | fis4 d8 b4. | d'4. d8. c16 b8 | a4 fis8 d8.( e16) fis8 | g8. fis16 e8 dis8. cis16 dis8 | e4.\trill \grace {e16[ fis]} e4.\fermata | R2.
 	}
 
 	
@@ -64,10 +106,9 @@
 				\new Staff = "pianoRight" \pianoRight
 				\new Staff = "pianoLeft" \pianoLeft
 			>>
-			\new Staff = "violin" <<
-%				\set Staff.instrumentName = #"Violin"
-%				\set Staff.shortInstrumentName = #"Vln"
-				\violin
+			\new StaffGroup <<
+				\new Staff = "violin" \violin
+				\new Staff = "cello" \cello
 			>>
 		>>
 		\layout { }

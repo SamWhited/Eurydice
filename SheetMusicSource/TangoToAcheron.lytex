@@ -28,6 +28,7 @@
 		\time 4/4
 
 		<c e a>1 | <b d gis> | <d e gis> | <c e a> | << { a'2 a } \\ { <d, f>1 } >> | << { g2. } \\ { <a, c e>1 }>> | <d e gis>1 | <a c e>
+		\bar "||"
 	}
 
 	pianoLeft = \relative c' {
