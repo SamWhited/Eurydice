@@ -1,0 +1,95 @@
+% !TEX TS-program = lytex
+% !TEX encoding = UTF-8
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{multicol}
+\usepackage{textcomp}
+\usepackage[margin=2cm]{geometry}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+	{\large \textbf{Greensleeves}}\\
+	Eurydice
+\end{center}
+
+\begin{flushright}
+	\textbf{Traditional}\\
+	Sam Whited
+\end{flushright}
+
+\begin{lilypond}
+	\version "2.14.2"
+
+	cello = \relative c {
+		\set Staff.midiInstrument = #"cello"
+		\clef bass
+		\key g \major
+		\time 6/8
+
+		\partial 8 {e8} | g4 a8 b8. c16 b8 | c4 a8 fis8. a16 b8 | g4 e'8 e8. dis16 e8 | g4 fis8 dis4 b8 | g4 a b16 c b8 | d,8 d a' fis4 a8 | e8[ e \grace b'8 a] fis4 d8 | e8. e16 e8 e4. | d'4. d8. c16 b8 | a4 \grace g8 fis d8. e16 fis8 | g4 \grace a8 c b8.a16 fis8 | fis4 d8 b4. | d'4. d8. c16 b8 | a4 fis8 d8.( e16) fis8 | g8. fis16 e8 dis8. cis16 dis8 | e4.\trill \grace {e16[ fis]} e4 r8
+	}
+
+	harpRight = \relative c' {
+		\set Staff.midiInstrument = #"orchestral harp"
+		\tempo 4 = 90
+		\clef treble
+		\key g \major
+		\time 6/8
+
+		\partial 8 {<b e>8} | <e g>4 <d a'>8 <d b'>8. c'16 <g b>8 | <fis a c>4 fis8 d8. <fis a>16 <c g' b>8 | g'4 \grace b8 c <c e>8.( <b dis>16) <c e>8 | {
+			\override TupletBracket #'bracket-visibility = #'if-no-beam
+			\times 2/3 {a8 g fis}  fis16 e dis4 b8
+		} | b16 c d e g fis d4. | a16 b c d fis a b4 a8 | <e g>16 g g8 a fis e d | <b e>8 <c fis>16 d <b e>8 <b e>4. | d8\glissando d'4 <b d>8. <c e>16 <d fis>8 | <e g>8. <d fis>16 <c e>8 <b d>8. <a c>16 <g b>8 | <c e>8. <b d>16 <a c>8 <g b>8. <a c>16 <a d>8 | <fis a>2. | d'8 c b b8. c16 d8 | a4. \grace g4 fis8. d | g4 \grace fis8 e dis8. cis16 dis8 | <c e>4. <e g>4 r8
+		\bar "||"
+	}
+
+	harpLeft = \relative c {
+		\set Staff.midiInstrument = #"orchestral harp"
+		\clef bass
+		\key g \major
+		\time 6/8
+
+		\partial 8 {<e g>8} <e b'>4 <fis a>8 g4 <g b>8 | << {
+			d'8[ d] <d,~ a'>8 <d fis>4 <dis a'>8
+		} \\ {
+			d4
+		} >> | <b b'>4 ~ <b b'>8 <e g>8. dis16 <e g>8 | <e g>4 <dis fis>8 dis r4 | <e g>4 <d a'>8 <d b'>8. c'16 <b b,>8 | <fis a>4 <d fis>8 d8. e16 <c fis>8 | <e g>8 \grace e g <a a,> <fis b,>4 \grace d8 <b fis'> | <e g>4. <e g>4 r8 | {
+			\override TupletBracket #'bracket-visibility = #'if-no-beam
+			d8\glissando d'4 b,16 c d \times 2/3 {c32 d e} \times 2/3 {d16 e fis}
+		} | g8 fis e d c b | c8. c16 c8 b8. c16 d8 | a2. | b'4. <g d'>4 <g d'>8 | << {
+			d'4 s8 <d, fis>4 <dis a'>8
+		} \\ {
+			d8 d <d a'>
+		} >> | <e g>4 <a a,>8 <fis b,>4 <fis b,>8 | <e g>4. <e g>4 r8
+	}
+
+	
+	\score {
+		<<
+			#(set-accidental-style 'default 'Score)
+			\new Staff = "cello" <<
+				\cello
+			>>
+			\new GrandStaff <<
+%				Staff names do not respect margins.
+%				\set GrandStaff.instrumentName= #"Harp"
+%				\set GrandStaff.shortInstrumentName = #"Hp"
+				\new Staff = "harpRight" \harpRight
+				\new Staff = "harpLeft" \harpLeft
+			>>
+		>>
+		\layout { }
+		\midi { }
+	}
+\end{lilypond}
+
+\begin{center}
+	\vfill
+%	Has no legal meaning of course, but it amuses me.
+%	Copyright is implied even without the statement, so it doesn't matter.
+	\textcopyleft\ 2011 Samuel Whited
+\end{center}
+
+\end{document}
