@@ -7,7 +7,7 @@ IF EXIST %BASENAME% RMDIR /S /Q %BASENAME%
 lilypond-book --output=%BASENAME% --pdf %BASENAME%.%SUFFIX%
 if %errorlevel% neq 0 EXIT /B %errorlevel%
 CD /D %BASENAME%
-pdftex --synctex=1 -undump=pdflatex %BASENAME%.tex
+pdflatex --synctex=1 %BASENAME%.tex
 
 if %errorlevel% neq 0 EXIT /B %errorlevel%
 COPY %BASENAME%.pdf ..\
