@@ -11,8 +11,6 @@ SystemCheck.*
 *.mus
 *.synctex.gz
 *.synctex.gz(busy)
-*.sh
-*.bat
 Eurydice.cues
 Eurydice.YSM
 Music/
@@ -25,5 +23,4 @@ temp/
 SoundEffects/
 SoundEffectsSource/
 SystemCheck_data/
-LyTeX
 SheetMusicSource/*/
