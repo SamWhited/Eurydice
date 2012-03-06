@@ -16,4 +16,4 @@ lilypond-book --output=$BASENAME --pdf $BASENAME.$SUFFIX
 cd $BASENAME
 pdflatex --synctex=1 $BASENAME.tex
 
-copy $BASENAME.pdf ../
+cp $BASENAME.pdf ../
