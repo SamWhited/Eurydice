@@ -27,8 +27,3 @@ cp $BASENAME/$BASENAME.pdf ./$BASENAME.pdf >/dev/null 2>&1 || { echo >&2 "Error 
 echo "Copying midi files..."
 MIDIDIR=$(find `ls -l | awk ' /^d/ { print $NF } '` -type d | grep $BASENAME | tail -n 1)
 cp $MIDIDIR/*.midi ./$BASENAME.midi >/dev/null 2>&1 || { echo >&2 "No midi output detected."; exit 0; }
-
-command -v timidity >/dev/null 2>&1 || { echo >&2 "Timidity is not installed. No flac file will be generated."; exit 0; }
-
-echo "Generating flac files..."
-timidity -OF $BASENAME.midi
